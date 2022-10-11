@@ -1,8 +1,10 @@
 function solve(name, population, treasury){
-    var city = {};
-    city.name = name;
-    city.treasury = treasury;
-    city.population = population;
+
+    let city = {
+        name,
+        population,
+        treasury
+    };
 
     return city;
 }

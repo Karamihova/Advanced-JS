@@ -1,29 +1,18 @@
-function solve(array){
+function solve(input){
+    let townPopulationRegistry = {};
+    for (const line of input) {
+        let [city, population] = line.split(' <-> ');
+        population = Number(population);
 
-    let cities = [];
-
-    for (let i = 0; i < array.length; i++) {
-        let currLine = array[i].split(' <-> ');
-        let city = {};
-        let name = currLine[0];
-        let population = currLine[1];
-
-        if(cities.includes(x => x.name === name)){
-            let currCity =cities.find(x => x.name === name);
-            currCity.population += population;
+        if(townPopulationRegistry[city]){
+            townPopulationRegistry[city] += population;
         } else{
-            city.name = name;
-            city.population = population;
-            cities.push(city);
+            townPopulationRegistry[city] = population;
         }
-        
     }
 
-    for (let i = 0; i < cities.length; i++) {
-        
-        let city = cities[i];
-        console.log(`${city.name} : ${city.population}`)
-        
+    for (const city in townPopulationRegistry) {
+        console.log(`${city} : ${townPopulationRegistry[city]}`);
     }
 }
 
